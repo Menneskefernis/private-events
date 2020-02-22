@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :user_exists, only: [:create]
+  
   def new
     @user = User.new
   end
@@ -18,5 +20,13 @@ class UsersController < ApplicationController
   private
     def user_params  
       params.require(:user).permit(:name, :email)
+    end
+
+    def user_exists
+      @user = User.find_by(email: user_params[:email])
+      if @user
+        flash[:warning] = "A user with this email already exists"
+        redirect_to root_url
+      end
     end
 end
