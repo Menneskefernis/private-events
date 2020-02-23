@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :user_exists, only: [:create]
-  
+  before_action :logged_in_user, only: [:show]
+
   def new
     @user = User.new
   end
@@ -16,6 +17,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @event  = @user.events.build
+    @created_events = @user.events
   end
 
   private

@@ -1,0 +1,9 @@
+<%= form_for @event do |f| %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <%= f.label :date %>
+  <%= f.date_select :date %>
+  <%= f.submit "Post event!" %>
+<% end %>

@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Hello <%= @user.name %></h1>
+<p>Create a new event:</p>
+<%= render 'events/event_form' %>
+
+<% if current_user.events.any? %>
+  <p><b>You have <%= pluralize(current_user.events.count, "active event") %></b></p>
+  <ul>
+    <%= render @created_events %>
+  </ul>
+<% end %>

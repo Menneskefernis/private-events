@@ -4,7 +4,8 @@ class User < ApplicationRecord
   validates :name,  presence: true
   validates :email, presence: true
 
-  has_many :events, dependent: :destroy, foreign_key: :creator_id
+  has_many :events, dependent: :destroy,
+                    foreign_key: :creator_id
 
   private
     def downcase_email

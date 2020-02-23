@@ -1,0 +1,7 @@
+<% unless event.description.nil? %>
+  <li><b><%= event.description %></b></li>
+  <li><%= event.location %></li>
+  <li><%= event.date %></li>
+  <%= link_to "Read more", event_path(event) %>
+  <hr>
+<% end %>
