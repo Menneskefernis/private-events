@@ -1,1 +1,8 @@
-<h1><%= @event.creator.name %></h1>
+<h1><%= @event.description %></h1>
+
+<% if @attendees.any? %>
+  <h4>Attendees:</h4>
+  <ul>
+  <%= render @attendees %>
+  </ul>
+<% end %>

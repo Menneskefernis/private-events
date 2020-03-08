@@ -4,6 +4,5 @@ class Event < ApplicationRecord
   validates :date, presence: true
 
   belongs_to :creator, class_name: "User"
-  has_many   :attendees, dependent: :destroy,
-                         foreign_key: :attendee_id
+  has_and_belongs_to_many   :attendees, class_name: "User"
 end

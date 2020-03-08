@@ -1,10 +1,18 @@
-<h1>Hello <%= @user.name %></h1>
+<h1><%= @user.name %>'s page</h1>
 <p>Create a new event:</p>
-<%= render 'events/event_form' %>
-
+<% if @user == current_user %>
+  <%= render 'events/event_form' %>
+<% end %>
 <% if current_user.events.any? %>
   <p><b>You have <%= pluralize(current_user.events.count, "active event") %></b></p>
   <ul>
     <%= render @created_events %>
+  </ul>
+<% end %>
+
+<% if current_user.attended_events.any? %>
+  <p><b>You will attend <%= pluralize(current_user.attended_events.count, "event") %></b></p>
+  <ul>
+    <%= render @attended_events %>
   </ul>
 <% end %>

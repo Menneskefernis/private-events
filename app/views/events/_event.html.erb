@@ -1,5 +1,5 @@
 <% unless event.description.nil? %>
-  <li><b><%= event.description %></b></li>
+  <li><i><%= event.description %></i></li>
   <li><%= event.location %></li>
   <li><%= event.date %></li>
   <%= link_to "Read more", event_path(event) %>

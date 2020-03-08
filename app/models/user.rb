@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many   :events, dependent: :destroy,
                     foreign_key: :creator_id
-  has_many :attended_events, class_name: "Event"
+  has_and_belongs_to_many   :attended_events, class_name: "Event"
 
   private
     def downcase_email
