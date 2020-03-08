@@ -3,16 +3,24 @@
 <% if @user == current_user %>
   <%= render 'events/event_form' %>
 <% end %>
-<% if current_user.events.any? %>
-  <p><b>You have <%= pluralize(current_user.events.count, "active event") %></b></p>
+<% if @user.events.any? %>
+  
+  <p><b><%= form_of_address %> created <%= pluralize(@user.events.count, "event") %></b></p>
   <ul>
     <%= render @created_events %>
   </ul>
 <% end %>
 
-<% if current_user.attended_events.any? %>
-  <p><b>You will attend <%= pluralize(current_user.attended_events.count, "event") %></b></p>
+<% if @upcoming_events.any? %>
+  <p><b><%= form_of_address(true) %> <%= pluralize(@upcoming_events.count, "upcoming event") %></b></p>
   <ul>
-    <%= render @attended_events %>
+    <%= render @upcoming_events %>
+  </ul>
+<% end %>
+
+<% if @previous_events.any? %>
+  <p><b><%= form_of_address(true) %> <%= pluralize(@previous_events.count, "previous event") %></b></p>
+  <ul>
+    <%= render @previous_events %>
   </ul>
 <% end %>

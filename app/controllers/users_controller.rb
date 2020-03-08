@@ -25,6 +25,8 @@ class UsersController < ApplicationController
     end
     @created_events = @user.events
     @attended_events = @user.attended_events
+    @upcoming_events = @user.upcoming_events
+    @previous_events = @user.previous_events
   end
 
   private

@@ -1,8 +1,9 @@
-<h1><%= @event.description %></h1>
+<h1>Event created by <%= @event.creator.name %></h1>
+<%= @event.description %>
 
 <% if @attendees.any? %>
   <h4>Attendees:</h4>
   <ul>
-  <%= render @attendees %>
+    <%= render @attendees %>
   </ul>
 <% end %>
