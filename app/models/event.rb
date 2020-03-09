@@ -7,5 +7,7 @@ class Event < ApplicationRecord
   validates :date, presence: true
 
   belongs_to :creator, class_name: "User"
-  has_and_belongs_to_many   :attendees, class_name: "User"
+  has_many   :invitations
+  has_many   :attendees, class_name: "User", through: :invitations, source: :user
+  #has_and_belongs_to_many   :attendees, class_name: "User"
 end

@@ -20,6 +20,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @attendees = @event.attendees
+    @invitees = User.invitees(current_user)
   end
 
   private

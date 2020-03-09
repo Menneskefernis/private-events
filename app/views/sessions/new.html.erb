@@ -1,7 +1,7 @@
 <h1>Log in below!</h1>
 <p>(We don't care about security in this app, so just write your user name)</p>
 
-<%= form_for :session, url: login_path do |f| %>
+<%= form_with scope: :session, url: login_path do |f| %>
   <%= f.label :name, "Username:" %>
   <%= f.text_field :name %>
   <%= f.submit "Log in!" %>

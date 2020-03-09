@@ -1,5 +1,15 @@
 <h1>Event created by <%= @event.creator.name %></h1>
 <h3><%= @event.description %></h3>
+<p>Location: <%= @event.location %></p>
+<p>Date: <%= @event.date %></p>
+
+<% if @event.creator == current_user %>
+  <h4>Invite a user</h4>
+  <%= form_with model: @invitation, url: invitations_path do |f| %>
+    <%= f.collection_select(:user, @invitees, :id, :name) %>
+    <%= f.submit "Send invite!" %>
+  <% end %>
+<% end %>
 
 <% if @attendees.any? %>
   <h4>Attendees:</h4>
@@ -9,3 +19,5 @@
 <% else %>
   <p><i>There are currently no attendees for this event :(</i></p>
 <% end %>
+
+
